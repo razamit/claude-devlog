@@ -1,0 +1,15 @@
+{
+  "name": "devlog-marketplace",
+  "owner": {
+    "name": "Amit Raz"
+  },
+  "description": "Marketplace for the devlog plugin — progress log, decision log, tickets, and session-wrap discipline for Claude Code projects.",
+  "plugins": [
+    {
+      "name": "devlog",
+      "source": "./",
+      "description": "Newest-first progress log, append-only decision log, file-per-issue tickets, and an evidence-summary session-wrap before every commit.",
+      "category": "workflow"
+    }
+  ]
+}
