@@ -1,14 +1,14 @@
 ---
 name: session-wrap
-description: Pre-commit close-out: enumerate EVERY file touched (verified against git diff to catch stray changes), update the progress log / decision log / tickets, then commit. Closes the gap that lets unrelated working-tree changes ride into commits unnoticed. Use before every commit that changed code.
+description: 'Pre-commit close-out: enumerate EVERY file touched (verified against git diff to catch stray changes), update the progress log, decision log, and tickets, then prepare the requested commit. Closes the gap that lets unrelated working-tree changes ride into commits unnoticed. Use before every commit that changed code; never commit unless the user explicitly asked.'
 disable-model-invocation: false
 ---
 
 # Session wrap — the evidence summary and close-out
 
-Every session that changed files ends with a close-out, in this order. The
-point of the ordering: the logs are written while the evidence is fresh, and
-the commit happens only after the record matches the diff.
+Before a requested commit for a session that changed files, run this close-out
+in order. The logs are written while the evidence is fresh, and a commit
+happens only after the record matches the diff.
 
 ## 1. Evidence summary — every file, no exceptions
 
@@ -45,11 +45,13 @@ With the summary in hand:
   everything observed but not fixed. Nothing surfaced this session may live
   only in the conversation.
 
-## 3. Commit
+## 3. Commit, only when requested
 
-Only now. The commit includes the log updates in the same commit as the work
-they describe, so the record cannot drift from the code. The commit message's
-body should agree with the progress entry's headline.
+If the user explicitly requested a commit, commit only now. The commit includes
+the log updates in the same commit as the work they describe, so the record
+cannot drift from the code. The commit message's body should agree with the
+progress entry's headline. Otherwise, stop after presenting the close-out and
+leave the changes uncommitted.
 
 ## Honesty requirements
 

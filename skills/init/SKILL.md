@@ -28,12 +28,18 @@ exists — never overwrite an existing file.
    (no `docs/`, or a different convention), follow the project's convention
    and use those paths throughout.
 
-3. **Wire CLAUDE.md.** This is the step that makes the process self-sustaining:
-   `CLAUDE.md` is always in context, so instructions placed there apply in every
-   future session without anyone asking for them. Append this block (create the
-   file if absent), written as standing instructions rather than description:
+3. **Wire CLAUDE.md idempotently.** This is the step that makes the process
+   self-sustaining: `CLAUDE.md` is always in context, so instructions placed
+   there are available in every future session. Before writing, look for either
+   the `devlog:start` / `devlog:end` markers below or an existing `## Devlog`
+   section. If the marked block already uses the correct paths, leave it
+   unchanged. If its paths or wording are stale, replace only that owned block.
+   If an unmarked `## Devlog` section exists, update it in place and add the
+   markers. Never append a second Devlog section. Create `CLAUDE.md` if absent;
+   otherwise append the block only when no Devlog section exists.
 
    ```markdown
+   <!-- devlog:start -->
    ## Devlog
 
    This project keeps a written record. Maintain it without being asked.
@@ -52,14 +58,16 @@ exists — never overwrite an existing file.
      status marker, scope note, real proof (actual test output, before/after),
      files touched, cross-refs. State red tests honestly; never imply
      completeness you have not verified.
-   - **Before any commit** — evidence summary naming every path in
+   - **Before any requested commit** — evidence summary naming every path in
      `git status --short` / `git diff --stat`, including incidental edits and
      deletions, verified against the actual diff; then the log updates above,
-     in the same commit as the work; then commit.
+     in the same commit as the work; then commit. Never commit unless the user
+     explicitly asked.
 
    The `devlog` plugin skills (`progress-log`, `decision-log`, `tickets`,
    `session-wrap`) hold the full conventions — read the relevant one before
    writing to these files.
+   <!-- devlog:end -->
    ```
 
    Use the actual paths from steps 1–2, not the defaults, if they differ.

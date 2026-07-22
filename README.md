@@ -29,7 +29,7 @@ but doesn't fix, and leaves a verifiable record of what it did.
 From GitHub (once pushed):
 
 ```
-/plugin marketplace add <owner>/claude-devlog
+/plugin marketplace add razamit/claude-devlog
 /plugin install devlog@devlog-marketplace
 ```
 
@@ -50,17 +50,21 @@ In any project, start with:
 /devlog:init
 ```
 
-This scaffolds the three artifacts (adapting to files you already have — it
-never overwrites) and wires pointers into the project's `CLAUDE.md` so every
-future session knows the discipline without being told.
+This scaffolds the three artifacts (adapting to files you already have without
+replacing them) and maintains an idempotent, clearly marked block in the
+project's `CLAUDE.md`, so the discipline is available as standing instructions
+in future sessions.
 
-Proactivity comes from two places, no hooks required:
+Best-effort proactivity comes from two places, no hooks required:
 
-1. **The CLAUDE.md block** `/devlog:init` writes — always in context, phrased
-   as standing instructions ("noticing a defect you will not fix now → file a
-   ticket"), so every future session follows the process unprompted.
-2. **The skill descriptions** — Claude loads the matching skill on its own when
-   a moment calls for it, and reads the full conventions before writing.
+1. **The CLAUDE.md block** `/devlog:init` maintains — always in context and
+   phrased as standing instructions ("noticing a defect you will not fix now →
+   file a ticket").
+2. **The skill descriptions** — they help Claude recognize when a skill is
+   relevant and load its full conventions before writing.
+
+This is model-directed behavior, not hard enforcement. Review generated log
+updates with the same care as any other project documentation.
 
 Explicit entry points, when you want to drive it yourself:
 
@@ -99,3 +103,17 @@ skills/
 
 No hooks, no scripts, no dependencies — plain markdown skills, so it also
 works by simply copying `skills/*` into a project's `.claude/skills/`.
+
+## Limits
+
+- Devlog improves continuity; it does not guarantee that every relevant event
+  will be recorded automatically.
+- Its file-based tickets complement rather than replace a shared issue tracker
+  when work needs assignment, notifications, or cross-team reporting.
+- `/devlog:session-wrap` prepares and verifies a close-out, but commits only
+  when the user explicitly asks.
+
+## Validation
+
+Release checks and the recommended behavioral test matrix are documented in
+[`TESTING.md`](TESTING.md).

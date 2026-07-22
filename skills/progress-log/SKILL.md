@@ -1,6 +1,6 @@
 ---
 name: progress-log
-description: Record what was done at the end of each work session: newest-first dated entry in docs/PROGRESS.md with status (✅ DONE / 🟡 PARTIAL / ⛔ NOT STARTED), scope note, real proof (test output, before/after), files touched, cross-refs to decisions and tickets. Read the head to know current state. Use at session-end and to answer "where are we?"
+description: 'Record what was done at the end of each work session: newest-first dated entry in docs/PROGRESS.md with status (✅ DONE / 🟡 PARTIAL / ⛔ NOT STARTED), scope note, real proof (test output, before/after), files touched, cross-refs to decisions and tickets. Read the head to know current state. Use at session-end and to answer "where are we?"'
 disable-model-invocation: false
 ---
 

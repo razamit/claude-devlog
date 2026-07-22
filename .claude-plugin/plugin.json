@@ -1,7 +1,7 @@
 {
   "name": "devlog",
   "displayName": "Devlog",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A lightweight project-memory discipline for Claude Code: newest-first progress log, append-only decision log, file-per-issue tickets, and an evidence-summary session-wrap before every commit.",
   "author": {
     "name": "Amit Raz"
