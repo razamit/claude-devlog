@@ -54,9 +54,15 @@ This scaffolds the three artifacts (adapting to files you already have — it
 never overwrites) and wires pointers into the project's `CLAUDE.md` so every
 future session knows the discipline without being told.
 
-Day to day, Claude applies the skills automatically when they're relevant
-(discovering a bug mid-task → files a ticket; finishing work → offers the
-wrap). Explicit entry points:
+Proactivity comes from two places, no hooks required:
+
+1. **The CLAUDE.md block** `/devlog:init` writes — always in context, phrased
+   as standing instructions ("noticing a defect you will not fix now → file a
+   ticket"), so every future session follows the process unprompted.
+2. **The skill descriptions** — Claude loads the matching skill on its own when
+   a moment calls for it, and reads the full conventions before writing.
+
+Explicit entry points, when you want to drive it yourself:
 
 | Command | Does |
 |---|---|

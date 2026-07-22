@@ -7,6 +7,5 @@
     "name": "Amit Raz"
   },
   "license": "MIT",
-  "keywords": ["workflow", "progress-log", "decisions", "tickets", "process"],
-  "hooks": "./hooks/hooks.json"
+  "keywords": ["workflow", "progress-log", "decisions", "tickets", "process"]
 }
