@@ -8,5 +8,5 @@
   },
   "license": "MIT",
   "keywords": ["workflow", "progress-log", "decisions", "tickets", "process"],
-  "hooks": "./.claude-plugin/hooks.json"
+  "hooks": "./hooks/hooks.json"
 }
