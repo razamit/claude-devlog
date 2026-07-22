@@ -1,6 +1,7 @@
 ---
 name: session-wrap
-description: End-of-session close-out discipline — evidence summary enumerating EVERY touched file verified against the git diff, then progress entry, decision rows, and ticket sweep, then commit. Use before committing any session's work.
+description: Pre-commit close-out: enumerate EVERY file touched (verified against git diff to catch stray changes), update the progress log / decision log / tickets, then commit. Closes the gap that lets unrelated working-tree changes ride into commits unnoticed. Use before every commit that changed code.
+disable-model-invocation: false
 ---
 
 # Session wrap — the evidence summary and close-out

@@ -1,6 +1,7 @@
 ---
 name: tickets
-description: File-per-issue ticket system in docs/tickets/. Use when a defect, gap, or deferred decision is discovered that will NOT be fixed in the current session — file a ticket instead of a drive-by fix or a TODO comment. Also covers updating and closing tickets.
+description: File a ticket when you discover a defect, gap, or decision that won't be fixed now. One markdown file per issue in docs/tickets/ with Symptom, Evidence, Why it matters, and Scope to decide. Tickets are the record of what was observed — keep them instead of drive-by fixes or TODO comments that disappear. File a new ticket, update an existing one, or close one.
+disable-model-invocation: false
 ---
 
 # Tickets — one file per issue, on the record

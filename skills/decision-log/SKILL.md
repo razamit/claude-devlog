@@ -1,6 +1,7 @@
 ---
 name: decision-log
-description: Append-only decision log (docs/DECISIONS.md) recording every consequential choice with its why, rejected alternatives, and proof — plus an Open Questions section for deferred decisions. Use when locking in a behaviour, choosing between approaches, deviating from a spec or convention, or deferring a choice.
+description: Record decisions that would be forgotten if not written down — in docs/DECISIONS.md as an append-only table. Every row includes WHY (the specific reasons that would need to change to reverse it), alternatives rejected and why each lost, and proof. Use when choosing between approaches, locking a behaviour, deviating from the spec, or deferring a choice. Decisions are not preferences; changing one requires revisiting its reasons.
+disable-model-invocation: false
 ---
 
 # Decision log — decisions are not preferences

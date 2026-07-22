@@ -1,6 +1,7 @@
 ---
 name: progress-log
-description: Newest-first dated progress log (docs/PROGRESS.md) with one entry per completed unit of work — status marker, scope note, proof, cross-refs. Use at the end of any session that changed code, and when reading a project's history to get current state.
+description: Record what was done at the end of each work session: newest-first dated entry in docs/PROGRESS.md with status (✅ DONE / 🟡 PARTIAL / ⛔ NOT STARTED), scope note, real proof (test output, before/after), files touched, cross-refs to decisions and tickets. Read the head to know current state. Use at session-end and to answer "where are we?"
+disable-model-invocation: false
 ---
 
 # Progress log — one entry per unit of work, newest first

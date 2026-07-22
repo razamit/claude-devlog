@@ -1,0 +1,21 @@
+{
+  "hooks": [
+    {
+      "event": "before-commit",
+      "prompt": "Before committing, did you run /devlog:session-wrap to verify the evidence summary against the diff? If not, run it now — it catches stray changes and updates the progress log."
+    },
+    {
+      "event": "test-failed",
+      "prompt": "Consider whether this failure should be filed as a ticket (/devlog:tickets) if it's a defect to fix later, rather than ignoring it or leaving a TODO comment."
+    },
+    {
+      "event": "after-edit",
+      "condition": "user-asked-for-commit",
+      "prompt": "Before committing: have you updated the progress log (/devlog:progress-log) with what changed, the proof (test output, before/after), and cross-refs? Also check for any decisions made this session that should be recorded (/devlog:decision-log) and any observations that should be filed as tickets (/devlog:tickets)."
+    },
+    {
+      "event": "error-observed",
+      "prompt": "File a ticket for this issue (/devlog:tickets) so it's recorded with evidence. If you're fixing it now, no ticket needed — but if it's out of scope for this session, file it so it's not forgotten."
+    }
+  ]
+}
