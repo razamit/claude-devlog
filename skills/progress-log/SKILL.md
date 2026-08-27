@@ -55,6 +55,24 @@ Name, by file or row, everything this entry touches in the rest of the system:
 - The decision-log rows recording choices made here.
 - The spec/plan section this implements, if the project has one.
 
+## Correspondence entries
+
+Filing an email or processing a call is a unit of work and gets its own
+entry (see the `emails` and `calls` skills):
+
+- Scope note: `docs only, no code, no spend` unless code changed.
+- Proof: for a call summary, that the WHOLE transcript was read, with its
+  length and last line (`written against the full 877-line transcript, read
+  to line 877`); for a reply, what the answers were checked against (the workbook,
+  the database, the report) and what the check found.
+- Name every email file and whether it is a draft or was sent (and when);
+  name the transcript, the summary, the decision row, the workplan, the
+  tickets.
+- What waits on the client is stated as a separate status: `✅ DONE (filing
+  + analysis). ⛔ NOT STARTED: the production run, waiting for their answer
+  on question 5`, with a pointer to where the wait is tracked. A call whose
+  summary email has not gone out yet says so: `decision row pending the send`.
+
 ## Rules
 
 - Prepend; never rewrite or delete old entries. Corrections get a bracketed

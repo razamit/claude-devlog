@@ -31,6 +31,23 @@ For each file, one line: the path and why it changed — including the honest
 "unrelated: was already modified in the working tree, excluded from this
 commit" case (then actually exclude it via selective staging).
 
+Correspondence files are files like any other and appear in the summary:
+`docs/emails/`, `docs/calls/`, `docs/plans/`. Three checks specific to them:
+
+- An email drafted this session and sent by the user must already hold the
+  text as sent, with its title flipped from draft to sent, before the commit
+  (the `sent` step of the `emails` skill; ask for the as-sent text if the
+  user has not pasted it). A committed draft that pretends to be the sent
+  text misattributes words to the client.
+- Renames (for example to the date-first form) go through `git mv`, and
+  every reference is rewritten in the same commit: grep the old name across
+  the repo and show zero hits in the summary.
+- Binaries and transcripts (a reply PDF, a call transcript) are committed
+  only when the repository is private and they are free of protected
+  identifiers (ID numbers, credentials, account numbers); see the Privacy
+  section of the `emails` skill. What was kept out is named, with where it
+  lives instead.
+
 ## 2. Update the logs
 
 With the summary in hand:
@@ -44,6 +61,10 @@ With the summary in hand:
   this work fixed, naming them in the progress entry; file new tickets for
   everything observed but not fixed. Nothing surfaced this session may live
   only in the conversation.
+- **Correspondence fold** — per the `emails` and `calls` skills: every reply
+  filed or call processed this session has its decision row attributed to
+  the client, its answer-data files, its tickets, and its unanswered items
+  carried into the next email or the blocked-on-client tracker.
 
 ## 3. Commit, only when requested
 

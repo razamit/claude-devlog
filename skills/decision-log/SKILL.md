@@ -20,6 +20,8 @@ silently reversed by a future session that cannot see it.
 - Deviating from the spec, a convention, or an earlier decision.
 - Retiring an approach (record what replaced it and why the old one lost).
 - Rejecting a ticket as won't-fix.
+- A client or stakeholder answering a question by email or on a call. Those
+  are decisions too, and the most easily lost (see below).
 
 ## Entry format
 
@@ -51,6 +53,29 @@ with a pointer to that row.
   row must be reconstructed from commits, mark it `[backfilled]`.
 - Cross-reference the progress-log entry that implemented the decision and any
   tickets it closed or spawned (see the `progress-log` and `tickets` skills).
+
+## Decisions made by the client
+
+When the decision came from a client reply or a call, the row is theirs:
+
+- Who column: the client person, then the user (`<Name> (client) + <user>`), so a
+  reader knows whose word it is and whom to ask before changing it.
+- Cite the source by path: the reply transcription and the original beside it
+  (`docs/emails/YYYY-MM-DD_from_<who>_<slug>{.pdf,.md}`), or the sent
+  summary email first and the transcript second for a call (the call row is
+  written only once that email has gone out and its file holds the as-sent
+  text). Add the time and cc when the same day has several exchanges.
+- One row per reply or per call, with numbered points that mirror the
+  question numbers of the email they answer. A row that settles eight
+  things is easier to cite than eight rows that share a source.
+- Quote the client's phrase where the wording is load-bearing; a paraphrase
+  is what gets argued about later.
+- Product asks made in passing go in the same row, marked "recorded here and
+  NOT built by this row", with a pointer to the ticket or the options step
+  that will handle them. Recording is not committing to build.
+- What the client did not answer is not a decision: it goes to the Open
+  Questions section or the workplan's blocked-on-client tracker, and into the
+  next email (see the `emails` and `calls` skills).
 
 ## When invoked directly (`/devlog:decision-log <the decision>`)
 

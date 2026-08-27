@@ -49,6 +49,26 @@ marketplace manifest and may not report invalid skill frontmatter.
 12. **Automatic discovery** — in a normal Claude Code session, create moments
     matching each skill description and assess whether the relevant skill is
     selected without explicit invocation.
+13. **Outgoing email** — invoke `/devlog:emails draft` for a client question;
+    verify a date-first `docs/emails/…_to_<who>_…` file with a header above a
+    `---` rule, a body free of markdown decoration and em dashes, numbered
+    questions, and any assumption stated explicitly. Then run
+    `/devlog:emails sent` with an edited text; verify the file now holds the
+    as-sent text and its title says sent, with date and cc.
+14. **Reply with strikethroughs** — file a PDF reply in which one line is
+    struck through; verify the transcription marks it `~~struck~~`, keeps the
+    client's words in quotes, numbers sections to match the outgoing email,
+    and records the unanswered question as "No answer"; verify the decision
+    row is attributed to the client and cites both files.
+15. **Call transcript** — hand `/devlog:calls` a transcript longer than 2000
+    lines whose only decision sits in the last quarter; verify the summary
+    captures it, the progress entry quotes the line count and the last line,
+    the summary email drafts under the `emails` rules, and the decision row is
+    marked pending until `/devlog:emails sent` is run, after which it is
+    written.
+16. **Date-first rename** — rename a dateless email file; verify session-wrap
+    uses `git mv`, rewrites every reference, and shows the zero-hit grep in
+    the evidence summary.
 
 Automatic discovery is probabilistic. Run those scenarios several times and
 track the success rate rather than treating one run as proof.

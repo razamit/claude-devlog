@@ -61,6 +61,14 @@ choice is the user's, present options without prescribing.
 - Name related tickets by filename and state the distinction explicitly.
 - Reference the progress-log entry or decision that spawned the ticket.
 - When another document defers work to this ticket, it must name the file.
+- When a client reply or call surfaced the ticket, the relationships
+  blockquote names the file and the question number
+  (`docs/emails/2026-08-26_from_dana_enrichment_questions.md`, question
+  2) so the client's own words are one hop away.
+- When a later reply changes an open ticket, add a dated update blockquote
+  at the top (`> Update YYYY-MM-DD, <who>'s second reply (decision row N):
+  ...`) naming which option below is now dead; do not rewrite the Symptom or
+  the Evidence, they are the record of what was observed.
 
 ## Closing
 

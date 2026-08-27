@@ -28,6 +28,12 @@ exists — never overwrite an existing file.
    (no `docs/`, or a different convention), follow the project's convention
    and use those paths throughout.
 
+   Correspondence folders (`docs/emails/`, `docs/calls/`, `docs/plans/`)
+   are created on first use by the `emails` and `calls`
+   skills. Scaffold them at init only when the user says the project has a
+   client or stakeholder they correspond with, or when such folders already
+   exist under another name (record that name in step 3).
+
 3. **Wire CLAUDE.md idempotently.** This is the step that makes the process
    self-sustaining: `CLAUDE.md` is always in context, so instructions placed
    there are available in every future session. Before writing, look for either
@@ -63,10 +69,16 @@ exists — never overwrite an existing file.
      deletions, verified against the actual diff; then the log updates above,
      in the same commit as the work; then commit. Never commit unless the user
      explicitly asked.
+   - **Client emails and calls** — every email to or from the client is
+     filed in `docs/emails/` (date-first, `to_`/`from_`, the text as sent;
+     replies transcribed beside the original), every call agenda, transcript
+     and summary in `docs/calls/`, and what the client decided there goes into
+     `docs/DECISIONS.md` attributed to the client, citing the file. Nothing
+     the client decided lives only in a mailbox.
 
    The `devlog` plugin skills (`progress-log`, `decision-log`, `tickets`,
-   `session-wrap`) hold the full conventions — read the relevant one before
-   writing to these files.
+   `session-wrap`, `emails`, `calls`) hold the full conventions — read the
+   relevant one before writing to these files.
    <!-- devlog:end -->
    ```
 
@@ -74,4 +86,5 @@ exists — never overwrite an existing file.
 
 4. **Report** what was created, what was detected and left alone, and remind
    the user of the entry points: `/devlog:session-wrap`, `/devlog:tickets`,
-   `/devlog:progress-log`, `/devlog:decision-log`.
+   `/devlog:progress-log`, `/devlog:decision-log`, `/devlog:emails`,
+   `/devlog:calls`.
