@@ -12,7 +12,7 @@ stamps to reconcile. From 0.4.0 on, shipping entries carry `[unreleased]`.
 - Mirrors: none (`.claude-plugin/marketplace.json` has no version field and is not a carrier)
 - Derived, do not edit: none
 - Build number: none
-- Tag: `devlog--vX.Y.Z`, made and pushed by `claude plugin tag` per TESTING.md, latest: none
+- Tag: `devlog--vX.Y.Z`, made by `claude plugin tag` per TESTING.md and pushed by hand, latest `devlog--v0.3.0`
 - Changelog style: `## X.Y.Z — YYYY-MM-DD`; the feed goes under `## Unreleased` in the same style, created at the first wrap that needs it
 - Bump policy: decision row 2
 
@@ -20,6 +20,6 @@ stamps to reconcile. From 0.4.0 on, shipping entries carry `[unreleased]`.
 
 | Version | Date | Build | Tag → commit | Shipped | Post |
 |---|---|---|---|---|---|
-| 0.3.0 | 2026-10-11 | | devlog--v0.3.0 → pending (d24ed33) | CHANGELOG 0.3.0 section; PROGRESS 2026-10-11 | |
+| 0.3.0 | 2026-10-11 | | devlog--v0.3.0 → 7972e61 (release commit d24ed33) | CHANGELOG 0.3.0 section; PROGRESS 2026-10-11 | |
 | 0.2.0 | 2026-08-27 | | untagged (024cb34), open question 5 | CHANGELOG 0.2.0 section | |
 | 0.1.2 | 2026-07-22 | | untagged (aa97166), open question 5 | CHANGELOG 0.1.2 section | |
