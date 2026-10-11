@@ -1,6 +1,6 @@
 ---
 name: session-wrap
-description: 'Pre-commit close-out: enumerate EVERY file touched (verified against git diff to catch stray changes), update the progress log, decision log, and tickets, then prepare the requested commit. Closes the gap that lets unrelated working-tree changes ride into commits unnoticed. Use before every commit that changed code; never commit unless the user explicitly asked.'
+description: 'Pre-commit close-out: enumerate EVERY file touched (verified against git diff to catch stray changes), update the progress log, decision log, and tickets, then prepare the requested commit. Closes the gap that lets unrelated working-tree changes ride into commits unnoticed. Use before every commit that changed code; never commit unless the user explicitly asked. Also feeds the changelog, checks version drift, and, when the project builds in public, keeps the post-ideas backlog.'
 disable-model-invocation: false
 ---
 
@@ -48,6 +48,12 @@ Correspondence files are files like any other and appear in the summary:
   section of the `emails` skill. What was kept out is named, with where it
   lives instead.
 
+Post files (`docs/posts/`) appear in the summary too. A file whose title
+says Posted must hold the text as posted, the URL and a passed privacy-gate
+line (the `posted` step of the `posts` skill). Every image under
+`docs/posts/assets/` touched this session is opened and looked at for
+credentials, paths with usernames and personal data before it is committed.
+
 ## 2. Update the logs
 
 With the summary in hand:
@@ -65,6 +71,20 @@ With the summary in hand:
   filed or call processed this session has its decision row attributed to
   the client, its answer-data files, its tickets, and its unanswered items
   carried into the next email or the blocked-on-client tracker.
+- **Changelog feed**: per the `releases` skill, one user-facing bullet under
+  `## [Unreleased]` in the changelog for every entry stamped `[unreleased]`
+  this session, ending with the entry date.
+- **Release line**: one line stating the canonical version, whether the
+  carriers and the tag agree, and how many entries are unreleased. On drift,
+  the line says so and points at `/devlog:releases status`; drift not fixed
+  this session becomes a ticket.
+- **Post-worthy check**: only when the Devlog block in CLAUDE.md has a
+  "Building in public" bullet. Run the four tests of the `posts` skill
+  (visible to a user, decision with a non-obvious why, a number changed, a
+  mistake with a lesson) over this session's entries and rows. One IDEAS.md
+  row and one line in the close-out per hit; nothing drawn from
+  `docs/emails/`, `docs/calls/` or a client-attributed row. If the oldest
+  open row is over 14 days old, say so in one line and add no row for it.
 
 ## 3. Commit, only when requested
 
@@ -72,7 +92,9 @@ If the user explicitly requested a commit, commit only now. The commit includes
 the log updates in the same commit as the work they describe, so the record
 cannot drift from the code. The commit message's body should agree with the
 progress entry's headline. Otherwise, stop after presenting the close-out and
-leave the changes uncommitted.
+leave the changes uncommitted. Release commits are cut by the `releases`
+skill, carriers and changelog section together; tags are made only by
+`/devlog:releases tag`, never here.
 
 ## Honesty requirements
 

@@ -32,6 +32,19 @@ A Claude Code plugin that gives any project a durable, on-the-record memory:
   same day as the binding confirmation, a decision row citing email and
   transcript once that email is sent, and a workplan with routes per feature
   and a blocked-on-client tracker.
+- **Releases** (`docs/RELEASES.md`, `CHANGELOG.md`): every file that
+  carries the version listed once, with derived fields marked do not edit;
+  drift between carriers and tags flagged at every wrap; progress entries
+  stamped `[unreleased]` and flipped to `[X.Y.Z]` at the cut, so the
+  changelog section is written from the entries and can be checked against
+  them; the bump proposed with its reasoning, carriers moved together in one
+  commit, tags annotated only on request and never pushed.
+- **Posts** (`docs/posts/`): building in public on the record. A post-ideas
+  backlog mined from the progress log, decisions, tickets and changelog,
+  never from client correspondence; one file per post per platform holding
+  the text as posted; drafts in the user's own voice with every number
+  traced to the record; a privacy gate before and after posting; public
+  replies folded into tickets, decision rows and an FAQ.
 
 The system was extracted from a production project where it kept dozens of
 Claude Code sessions coherent across months: each session reads the head of
@@ -90,6 +103,8 @@ Explicit entry points, when you want to drive it yourself:
 | `/devlog:decision-log <decision>` | Record a decision with its why, alternatives, and proof. |
 | `/devlog:emails draft\|sent\|file\|fold` | Draft an outgoing client email, record the text as actually sent, file a reply beside its original, or fold the latest reply into decisions, tickets and data files. |
 | `/devlog:calls <transcript>` | Archive a call transcript, write the summary and summary email, propose the decision row, scope the workplan. |
+| `/devlog:releases status\|propose\|cut\|tag` | Check every version carrier for drift, propose the bump from the stamped entries, cut the release (carriers, changelog section, stamps, index row), or create the annotated tag. |
+| `/devlog:posts ideas\|draft\|posted\|fold\|voice` | Mine the record for post ideas, draft one post per platform in the user's voice, record the text as posted, fold public replies into tickets, decisions and an FAQ, or set up the voice file. |
 
 ## Why it works
 
@@ -106,6 +121,13 @@ Explicit entry points, when you want to drive it yourself:
   a call is cited by file and question number, in their own words; the file
   holds the text as sent, not the draft, and a reply with strikethroughs is
   read from the PDF, not from extracted text that drops them.
+- **One version, every carrier.** The files that carry the version are
+  listed once, drift is reported before every commit, and the changelog is
+  written from stamped progress entries rather than from memory, so a
+  release section can be checked against the work it claims.
+- **Public words come from the record.** A post cites the entry, row or
+  changelog section it is drawn from, so every number in public is a number
+  the record holds, and nothing from client correspondence leaks into it.
 
 ## Layout
 
@@ -120,6 +142,8 @@ skills/
   session-wrap/       # the pre-commit close-out     (+ /devlog:session-wrap)
   emails/             # client email on the record   (+ /devlog:emails) + templates/
   calls/              # calls and meetings on record (+ /devlog:calls)  + templates/
+  releases/           # versions and releases       (+ /devlog:releases) + templates/
+  posts/              # building in public          (+ /devlog:posts)  + templates/
   init/               # /devlog:init scaffolder + templates/
 ```
 

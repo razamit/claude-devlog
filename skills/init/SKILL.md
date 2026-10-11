@@ -1,6 +1,6 @@
 ---
 name: init
-description: Scaffold the devlog system (docs/PROGRESS.md, docs/DECISIONS.md, docs/tickets/) into the current project and wire pointers into CLAUDE.md.
+description: Scaffold the devlog system (docs/PROGRESS.md, docs/DECISIONS.md, docs/tickets/, docs/RELEASES.md) into the current project and wire pointers into CLAUDE.md.
 disable-model-invocation: true
 ---
 
@@ -16,6 +16,10 @@ exists — never overwrite an existing file.
    `DECISIONS.md`, `CHANGELOG`-style decision tables inside a spec,
    `docs/tickets/`, `docs/issues/`). If found, do NOT create parallel files —
    record the existing paths in step 3 and only scaffold what is missing.
+   Also look for `CHANGELOG.md` and for version carriers (`package.json`,
+   `pubspec.yaml`, `build.gradle`, `Info.plist`, `project.pbxproj`,
+   `Cargo.toml`, `pyproject.toml`, `.claude-plugin/plugin.json`, a `VERSION`
+   file, git tags), and list what was found.
 
 2. **Scaffold what is missing** from the templates in this skill's
    `templates/` directory:
@@ -23,6 +27,14 @@ exists — never overwrite an existing file.
    - `docs/DECISIONS.md` ← `templates/DECISIONS.md`
    - `docs/tickets/` with `templates/ticket-example.md` copied in as
      `_template.md`
+   - `docs/RELEASES.md` ← the `releases` skill's `templates/RELEASES.md`,
+     with the carrier registry filled from what step 1 found (canonical,
+     mirrors, derived fields marked do not edit, build number, tag style).
+     Create it when the project has a version anywhere; otherwise ask
+     whether to start at 0.1.0 (a decision row) or leave releases out.
+   - `CHANGELOG.md` ← the `releases` skill's `templates/CHANGELOG.md`, only
+     when the file is absent and the project has a version. An existing
+     changelog is never restyled.
 
    Fill today's date into the seed rows. If the project keeps docs elsewhere
    (no `docs/`, or a different convention), follow the project's convention
@@ -33,6 +45,12 @@ exists — never overwrite an existing file.
    skills. Scaffold them at init only when the user says the project has a
    client or stakeholder they correspond with, or when such folders already
    exist under another name (record that name in step 3).
+
+   `docs/posts/`, `docs/posts/assets/` and `docs/posts/IDEAS.md` (from the
+   `posts` skill's `templates/IDEAS.md`) are scaffolded only when the user
+   says they post about this project in public. `VOICE.md` is seeded by the
+   `posts` skill at the first draft. Otherwise no folder and no bullet in
+   step 3, so client projects are never nudged to post.
 
 3. **Wire CLAUDE.md idempotently.** This is the step that makes the process
    self-sustaining: `CLAUDE.md` is always in context, so instructions placed
@@ -75,16 +93,30 @@ exists — never overwrite an existing file.
      and summary in `docs/calls/`, and what the client decided there goes into
      `docs/DECISIONS.md` attributed to the client, citing the file. Nothing
      the client decided lives only in a mailbox.
+   - **Versions and releases**: the files carrying the version are listed
+     once in `docs/RELEASES.md` and never re-detected. A progress entry for
+     work that reaches users ends `[unreleased]` and gets one bullet under
+     `## [Unreleased]` in `CHANGELOG.md`. Bump, cut and tag only through
+     `/devlog:releases`: carriers move together, tags on request, nothing
+     pushed.
+   - **Building in public**: posts about this project live in `docs/posts/`,
+     date-first with a platform marker, holding the text as posted. At every
+     wrap, work that passes a post-worthy test becomes a row in
+     `docs/posts/IDEAS.md`. Drafts follow `docs/posts/VOICE.md` and pass the
+     privacy gate before and after posting. Nothing from `docs/emails/` or
+     `docs/calls/` is post material.
 
    The `devlog` plugin skills (`progress-log`, `decision-log`, `tickets`,
-   `session-wrap`, `emails`, `calls`) hold the full conventions — read the
-   relevant one before writing to these files.
+   `session-wrap`, `emails`, `calls`, `releases`, `posts`) hold the full
+   conventions. Read the relevant one before writing to these files.
    <!-- devlog:end -->
    ```
 
    Use the actual paths from steps 1–2, not the defaults, if they differ.
+   Include the Building in public bullet only when `docs/posts/` was
+   scaffolded in step 2.
 
 4. **Report** what was created, what was detected and left alone, and remind
    the user of the entry points: `/devlog:session-wrap`, `/devlog:tickets`,
    `/devlog:progress-log`, `/devlog:decision-log`, `/devlog:emails`,
-   `/devlog:calls`.
+   `/devlog:calls`, `/devlog:releases`, `/devlog:posts`.

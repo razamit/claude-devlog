@@ -22,6 +22,12 @@ silently reversed by a future session that cannot see it.
 - Rejecting a ticket as won't-fix.
 - A client or stakeholder answering a question by email or on a call. Those
   are decisions too, and the most easily lost (see below).
+- Version policy: which carrier is canonical, the bump rule, starting a
+  project at 0.1.0, overriding a proposed bump (see the `releases` skill).
+  A routine bump is not a row; the release index records it.
+- Public feedback that changes a choice: the row cites the post file and
+  quotes the comment. The Who column stays the user's, with "prompted by
+  @handle" (see the `posts` skill).
 
 ## Entry format
 

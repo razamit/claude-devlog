@@ -14,6 +14,10 @@ git diff --check
 claude plugin tag --dry-run .
 ```
 
+Before `claude plugin tag`, run `/devlog:releases status` in a session on
+this repository: it must report no drift between `plugin.json`, the top
+`CHANGELOG.md` heading and the latest tag.
+
 Validate `plugin.json` directly: validating the repository root selects the
 marketplace manifest and may not report invalid skill frontmatter.
 
@@ -69,6 +73,48 @@ marketplace manifest and may not report invalid skill frontmatter.
 16. **Date-first rename** — rename a dateless email file; verify session-wrap
     uses `git mv`, rewrites every reference, and shows the zero-hit grep in
     the evidence summary.
+17. **Carrier detection**: on a Flutter fixture with `pubspec.yaml`, a Gradle
+    `versionName` set to `flutterVersionName` and an `Info.plist` holding
+    `$(FLUTTER_BUILD_NAME)`, run `/devlog:releases status`; verify the
+    registry names pubspec canonical, lists both derived fields as do not
+    edit, and that a second run reads the registry instead of re-detecting.
+18. **Drift**: hand-edit `versionName` to a literal and add a tag with no
+    changelog section; verify `status` quotes both values, the session-wrap
+    line reports drift and points at `status`, and a ticket is filed when
+    it is not fixed.
+19. **Bump proposal**: in a 0.x project with one Added and one Fixed entry
+    since the last release, verify `propose` says minor with one line per
+    criterion and a build number one above the last used; override to patch
+    and verify a decision row records the override.
+20. **Cut without tag**: run `cut`; verify one commit (when asked) containing
+    every carrier, the grep output shown with equal values, the section
+    renamed with a date, a fresh empty Unreleased above it, every stamp
+    flipped, a release entry at the head of the progress log, an index row,
+    and no tag. Then run `tag`; verify an annotated tag and nothing pushed.
+21. **Tag-canonical project**: with the version computed in CI from tags,
+    verify `cut` edits no carrier file and `tag` is the release act.
+22. **No version anywhere**: verify init or `status` offers 0.1.0 in the
+    native field or a `VERSION` file and writes a decision row.
+23. **Post ideas**: with a ✅ DONE entry carrying a number, a decision row
+    with a rejected alternative, an invisible refactor and a client-attributed
+    row, run `/devlog:posts ideas`; verify the first two become rows and the
+    last two do not, with the reason stated.
+24. **Draft and posted**: run `draft <row> for x, li`; verify two files
+    sharing a slug, X parts each under 280 characters, the LinkedIn link in
+    the first comment, no em dashes, no hype words, `Variants:` lines on
+    both. Run `posted` with edited text; verify the body is replaced, the
+    title flipped, the IDEAS row updated and a progress entry written.
+25. **Privacy gate**: draft from a client-attributed decision row; verify the
+    draft is refused until VOICE.md lists the client as public. Add a
+    screenshot containing a token; verify the gate names it and the title
+    stays at Draft.
+26. **Fold**: paste three public replies (a feature request, a question, a
+    thank-you); verify a ticket citing the post file and quoting the
+    comment, an FAQ entry, and a no-action line with a reason; a second
+    occurrence of the question across posts promotes it to `FAQ.md`.
+27. **Wrap mention**: wrap a session with a post-worthy entry in a project
+    with the Building in public bullet and in one without; verify the row
+    and the close-out line appear only with the bullet.
 
 Automatic discovery is probabilistic. Run those scenarios several times and
 track the success rate rather than treating one run as proof.

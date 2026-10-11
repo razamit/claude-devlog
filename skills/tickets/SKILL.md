@@ -17,6 +17,8 @@ future session can pick it up cold.
 - A fix needs a decision the user has not made yet.
 - A live run / test / audit surfaced something worth recording even if no code
   changes today.
+- Version drift reported at session-wrap and not fixed in the session: the
+  Symptom is the two disagreeing values, quoted (see the `releases` skill).
 
 Never leave the observation as a TODO comment, a chat remark, or an unexplained
 skip — file the ticket. Filing a ticket makes **no code change**; it is an
@@ -69,6 +71,9 @@ choice is the user's, present options without prescribing.
   at the top (`> Update YYYY-MM-DD, <who>'s second reply (decision row N):
   ...`) naming which option below is now dead; do not rewrite the Symptom or
   the Evidence, they are the record of what was observed.
+- When a public comment on a post surfaced the ticket, the relationships
+  blockquote names the post file and the commenter's handle and quotes the
+  request (see the `posts` skill).
 
 ## Closing
 

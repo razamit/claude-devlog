@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.3.0 — 2026-10-11
+
+Versions and releases, and building in public, join the record.
+
+- New `releases` skill (+ `/devlog:releases status|propose|cut|tag`): every
+  file that carries the version listed once in `docs/RELEASES.md`
+  (canonical, mirrors, derived fields marked do not edit, build number, tag
+  and changelog style), detected at init and never re-detected except by
+  `status`; five drift checks and a one-line report at every wrap, unfixed
+  drift filed as a ticket; progress entries stamped `[unreleased]` and
+  flipped to `[X.Y.Z]` at the cut, one changelog bullet per entry ending
+  with the entry date; the bump proposed from Added, Changed and Fixed with
+  one line per criterion, pre-1.0 never proposing 1.0.0, build numbers only
+  up; an eight-step cut (carriers moved together, grep shown, section
+  renamed, fresh Unreleased, release entry, index row); annotated tags only
+  on request and never pushed. Templates for `RELEASES.md` and a Keep a
+  Changelog style `CHANGELOG.md`.
+- New `posts` skill (+ `/devlog:posts ideas|draft|posted|fold|voice`): a
+  post-ideas backlog in `docs/posts/IDEAS.md` mined from the progress log,
+  decision rows, closed tickets, the changelog and git log, never from
+  client correspondence, with four post-worthy tests; one file per post per
+  platform, date-first with a platform marker (X, LinkedIn, Reddit, Indie
+  Hackers, Show HN, forum, blog, newsletter, Facebook), variants sharing a
+  slug; drafts in the user's voice from `VOICE.md`, no hype words, every
+  number cited to the record; a six-check privacy gate at draft and again at
+  posted; the body immutable once posted, metrics appended dated and
+  sourced; public replies folded into tickets, decision rows and an FAQ.
+  Templates for the post file, the platform profiles, the backlog and the
+  voice file. Opt-in per project through a Building in public bullet in the
+  CLAUDE.md block, so client projects are never nudged to post.
+- `progress-log`: the version stamp on shipping entries, the one permitted
+  edit to an old entry (the flip at the cut); public-post entries with
+  scope `docs only, public`.
+- `session-wrap`: post files and their assets in the evidence summary; a
+  changelog feed, a release line and a post-worthy check in the log update;
+  release commits and tags left to the `releases` skill.
+- `init`: carriers and `CHANGELOG.md` detected in step 1; `docs/RELEASES.md`
+  scaffolded from the registry, `CHANGELOG.md` only when absent; `docs/posts/`
+  only when the user posts about the project; two new CLAUDE.md bullets and
+  the two new entry points.
+- `decision-log`: rows for version policy (canonical carrier, bump rule,
+  0.1.0 start, bump override) and for public feedback that changes a choice.
+- `tickets`: unfixed version drift as a ticket; tickets surfaced by a public
+  comment cite the post file and quote the comment.
+
+Versions 0.1.2 and 0.2.0 were never tagged. `/devlog:releases status` on
+this repository reports both sections as untagged; the tags are a separate
+decision.
+
 ## 0.2.0 — 2026-08-27
 
 Client correspondence joins the record. Extracted from a project where the

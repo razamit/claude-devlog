@@ -8,7 +8,7 @@
     {
       "name": "devlog",
       "source": "./",
-      "description": "Newest-first progress log, append-only decision log, file-per-issue tickets, client emails and calls on the record, and an evidence-summary session-wrap before every commit.",
+      "description": "Newest-first progress log, append-only decision log, file-per-issue tickets, client emails and calls on the record, versions and releases on the record, posts about the project on the record, and an evidence-summary session-wrap before every commit.",
       "category": "workflow"
     }
   ]

@@ -1,6 +1,6 @@
 ---
 name: progress-log
-description: 'Record what was done at the end of each work session: newest-first dated entry in docs/PROGRESS.md with status (✅ DONE / 🟡 PARTIAL / ⛔ NOT STARTED), scope note, real proof (test output, before/after), files touched, cross-refs to decisions and tickets. Read the head to know current state. Use at session-end and to answer "where are we?"'
+description: 'Record what was done at the end of each work session: newest-first dated entry in docs/PROGRESS.md with status (✅ DONE / 🟡 PARTIAL / ⛔ NOT STARTED), scope note, real proof (test output, before/after), files touched, cross-refs to decisions and tickets, version stamp. Read the head to know current state. Use at session-end and to answer "where are we?"'
 disable-model-invocation: false
 ---
 
@@ -19,7 +19,7 @@ two entries.
 ## Entry format
 
 ```markdown
-**YYYY-MM-DD — <headline: what shipped, stated as the outcome> (<scope note>). <STATUS>**
+**YYYY-MM-DD — <headline: what shipped, stated as the outcome> (<scope note>). <STATUS> [unreleased]**
 <One dense paragraph: what changed and why (the trigger or root cause), the
 proof, files touched, and cross-references.>
 ```
@@ -55,6 +55,17 @@ Name, by file or row, everything this entry touches in the rest of the system:
 - The decision-log rows recording choices made here.
 - The spec/plan section this implements, if the project has one.
 
+## The version stamp
+
+An entry for work that reaches users ends its headline with `[unreleased]`.
+When the release is cut, the `releases` skill flips it to the version it
+shipped in, `[1.3.0]`, so `grep '\[1.3.0\]' docs/PROGRESS.md CHANGELOG.md`
+returns the release section and every entry in it. Docs-only and
+correspondence entries carry no stamp. In the same wrap step that writes
+the entry, one user-facing bullet goes under `## [Unreleased]` in the
+changelog, ending with the entry date; the entry keeps the why, the proof
+and the files, so nothing is written twice (see the `releases` skill).
+
 ## Correspondence entries
 
 Filing an email or processing a call is a unit of work and gets its own
@@ -73,11 +84,21 @@ entry (see the `emails` and `calls` skills):
   on question 5`, with a pointer to where the wait is tracked. A call whose
   summary email has not gone out yet says so: `decision row pending the send`.
 
+## Public posts
+
+Publishing a post, or folding its replies, is a unit of work with its own
+entry (see the `posts` skill): scope note `docs only, public`, one entry per
+publishing session naming each post file, with the proof that the privacy
+gate passed and that the file holds the text as posted. Folding replies
+gets a separate entry naming the tickets, decision rows and FAQ entries it
+produced.
+
 ## Rules
 
 - Prepend; never rewrite or delete old entries. Corrections get a bracketed
   `[Update, YYYY-MM-DD: …]` inside the old entry or a new entry that names the
-  old one.
+  old one. The one exception is the version stamp: `[unreleased]` is flipped
+  to `[X.Y.Z]` at the cut, by the `releases` skill.
 - Entries are written by the session that did the work, while the evidence is
   fresh — not reconstructed later. (If one must be reconstructed, mark it
   `[backfilled]`.)
