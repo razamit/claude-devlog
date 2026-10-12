@@ -20,6 +20,6 @@ stamps to reconcile. From 0.4.0 on, shipping entries carry `[unreleased]`.
 
 | Version | Date | Build | Tag → commit | Shipped | Post |
 |---|---|---|---|---|---|
-| 0.3.0 | 2026-10-11 | | devlog--v0.3.0 → 7972e61 (release commit d24ed33) | CHANGELOG 0.3.0 section; PROGRESS 2026-10-11 | |
+| 0.3.0 | 2026-10-11 | | devlog--v0.3.0 → 7972e61 (release commit d24ed33) | CHANGELOG 0.3.0 section; PROGRESS 2026-10-11 | docs/posts/2026-10-12_x_release-0-3-0.md |
 | 0.2.0 | 2026-08-27 | | untagged (024cb34), open question 5 | CHANGELOG 0.2.0 section | |
 | 0.1.2 | 2026-07-22 | | untagged (aa97166), open question 5 | CHANGELOG 0.1.2 section | |

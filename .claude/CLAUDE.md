@@ -40,6 +40,12 @@ This project keeps a written record. Maintain it without being asked.
   brackets; renamed to `## X.Y.Z — YYYY-MM-DD` at the cut). Bump, cut and tag
   only through `/devlog:releases`: carriers move together, tags on request,
   nothing pushed by the skill; the real tag is `claude plugin tag`.
+- **Building in public**: posts about this project live in `docs/posts/`,
+  date-first with a platform marker, holding the text as posted. At every
+  wrap, work that passes a post-worthy test becomes a row in
+  `docs/posts/IDEAS.md`. Drafts follow `docs/posts/VOICE.md` and pass the
+  privacy gate before and after posting. Nothing from `docs/emails/` or
+  `docs/calls/` is post material.
 
 The `devlog` plugin skills (`progress-log`, `decision-log`, `tickets`,
 `session-wrap`, `emails`, `calls`, `releases`, `posts`) hold the full
