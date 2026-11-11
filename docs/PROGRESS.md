@@ -6,6 +6,9 @@ files touched, cross-refs to decisions and tickets. Never rewrite old entries.
 
 ---
 
+**2026-11-11 — Plugin icon added for the plugin directory listing (asset only, no skill change). ✅ DONE [unreleased]**
+The plugin directory's submission check passed with one warning: no square PNG icon. Added `.claude-plugin/icon.png`, 1024×1024 PNG, 18 KB (limits: 512 to 2048 px, under 2 MB, no SVG or WebP): a log page with the newest entry in a teal accent (#14B8A6) and older entries in gray, on #18181B. Drawn with Pillow. The directory takes the icon only on the first save or submit in the developer portal, so it has to be pushed before that save. Proof: `sips` reports 1024×1024 png; `claude plugin validate .` reports "These checks found nothing to report" and "Validation passed". Not yet run: a re-run of the portal check after the push. Decision row 7; post idea row 5. Files: .claude-plugin/icon.png, CHANGELOG.md, docs/PROGRESS.md, docs/DECISIONS.md, docs/posts/IDEAS.md.
+
 **2026-10-12 — Release 0.3.0 post published on X (docs only, public). ✅ DONE**
 Posted as a single Hebrew post, not the English four-part draft; the text as posted is now the body of `docs/posts/2026-10-12_x_release-0-3-0.md`, the English draft kept below the rule. Second privacy gate passed (no client, no correspondence, no secrets or paths, release tagged, no user data, every claim in CHANGELOG 0.3.0 or decision row 3). IDEAS row 1 set to posted; RELEASES index Post cell for 0.3.0 filled. `VOICE.md` updated with what the first post showed: Hebrew on X with technical nouns in English, a single long post rather than a thread, and the sample line. URL https://x.com/razamit/status/2109600537121378385 and time 2026-10-12 14:02 (decoded from the status ID) are in the header. Files: docs/posts/2026-10-12_x_release-0-3-0.md, docs/posts/IDEAS.md, docs/posts/VOICE.md, docs/RELEASES.md, docs/PROGRESS.md.
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Plugin icon at `.claude-plugin/icon.png` (1024 px square PNG) for the
+  plugin directory listing. (2026-11-11)
+
 ## 0.3.0 — 2026-10-11
 
 Versions and releases, and building in public, join the record.
