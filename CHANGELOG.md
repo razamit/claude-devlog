@@ -4,6 +4,9 @@
 
 - Plugin icon (a 1024 px square PNG in the manifest folder) for the plugin
   directory listing. (2026-11-11)
+- Privacy policy in `PRIVACY.md`, linked from the README and from
+  `privacyPolicyUrl` in plugin.json: no server, no network calls, every
+  record stays in the user's repository. (2026-11-11)
 
 ## 0.3.0 — 2026-10-11
 

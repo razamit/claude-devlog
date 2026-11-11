@@ -159,6 +159,12 @@ works by simply copying `skills/*` into a project's `.claude/skills/`.
 - `/devlog:session-wrap` prepares and verifies a close-out, but commits only
   when the user explicitly asks.
 
+## Privacy
+
+Devlog has no server and makes no network calls. Everything it writes stays
+in your repository, including client emails and call transcripts when you
+ask it to file them. See the [Privacy](PRIVACY.md) policy.
+
 ## Validation
 
 Release checks and the recommended behavioral test matrix are documented in
