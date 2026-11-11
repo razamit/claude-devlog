@@ -2,8 +2,8 @@
 
 ## Unreleased
 
-- Plugin icon at `.claude-plugin/icon.png` (1024 px square PNG) for the
-  plugin directory listing. (2026-11-11)
+- Plugin icon (a 1024 px square PNG in the manifest folder) for the plugin
+  directory listing. (2026-11-11)
 
 ## 0.3.0 — 2026-10-11
 
